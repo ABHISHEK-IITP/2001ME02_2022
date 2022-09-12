@@ -1,16 +1,14 @@
+def octact_identification(mod=5000):
+###Code
 
-number=1
 
-number = int(input("Enter a number:"))
+from platform import python_version
+ver = python_version()
 
-fact = 1
-
-if number<0:
-    print("Fctorial does not exist")
-elif number==0:
-    print("Factorial of 0 = 1")  
+if ver == "3.8.10":
+    print("Correct Version Installed")
 else:
-    for i in range (1,number+1):
-      fact = fact*i
-    
-print("Factorial of " ,number ,"is" ,fact,)
+    print("Please install 3.8.10. Instruction are present in the GitHub Repo/Webmail. Url: https://pastebin.com/nvibxmjw")
+
+mod=5000
+octact_identification(mod)
