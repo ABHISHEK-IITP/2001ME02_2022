@@ -38,4 +38,32 @@ def octact_identification(mod=5000):
     vd.append(float(row[2])-v_avg)     # push row[2] - V_avg in vd list
     wd.append(float(row[3])-w_avg)     # push row[3] - W_avg	in wd list
 
- 
+ with open('octant_input.csv', 'r') as file: # opening input file for counting rows 
+  reader = csv.reader(file)
+  i=0
+  for row in reader:
+   i=i+1
+  n=i # n is number of rows
+  n=n-1
+  print(n) # print value of number of rows
+ with open('octant_input.csv', 'r') as file: # again opening the input file for octant 
+  reader = csv.reader(file)  
+ 	
+  for i in range(n):# using this for loop we will get octant
+   if (i<n-1):
+    if ((ud[i]>=0) and (vd[i]>=0) and (wd[i]>=0 )):
+     oct.append(1)         # adding the octant in oct list after checking the condition of octant 1 to calculate overall octant 1 value
+    elif((ud[i]>=0) and (vd[i]>=0) and (wd[i]<0 )):
+     oct.append(-1)         # adding the octant in oct list after checking the condition of octant -1 to calculate overall octant -1 value
+    elif((ud[i]<0) and (vd[i]>=0) and (wd[i]>=0 )):
+     oct.append(2)         # adding the octant in oct list after checking the condition of octant 2 to calculate overall octant 2 value
+    elif((ud[i]<0) and (vd[i]>=0) and (wd[i]<0 )):
+     oct.append(-2)         # adding the octant in oct list after checking the condition of octant -2 to calculate overall octant -2 value
+    elif((ud[i]>=0) and (vd[i]<0) and (wd[i]>=0 )):
+     oct.append(4)         # adding the octant in oct list after checking the condition of octant to 4 calculate overall octant 4 value
+    elif((ud[i]>=0) and (vd[i]<0) and (wd[i]<0 )):
+     oct.append(-4)         # adding the octant in oct list after checking the condition of octant to -4 calculate overall octant -4 value    
+    elif((ud[i]<0) and (vd[i]<0) and (wd[i]>=0 )):
+     oct.append(3)         # adding the octant in oct list after checking the condition of octant 3 to calculate overall octant 3 value
+    else:
+     oct.append(-3)          # adding the octant in oct list after checking the condition of octant -3 to calculate overall octant -3 value
