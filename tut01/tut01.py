@@ -106,3 +106,53 @@ def octact_identification(mod=5000):
  count6_mod=[]                   ## calculating total count of octant in mod range -3
  count7_mod=[]                   ## calculating total count of octant in mod range 4
  count8_mod=[]                   ## calculating total count of octant in mod range -4
+ with open('octant_input.csv', 'r') as file: # opening the file to calculate total count of octant in mod range
+  reader = csv.reader(file)
+  i=0
+  r=0
+  octant1=0
+  octant2=0
+  octant3=0
+  octant4=0
+  octant5=0
+  octant6=0
+  octant7=0
+  octant8=0
+  m= int((n-1)/mod) +1
+  for i in range(m):
+   s=mod*i
+   for r in range(mod):	 # for loop to calculate individual count of octants in range of mod
+    if(r+s<n-1):	                                    
+     if (oct[r+s]==1):
+      octant1=octant1+1    #calculate count of octant 1 in range of particular mod
+     elif(oct[r+s]==-1):
+      octant2=octant2+1    #calculate count of octant -1 in range of particular mod
+     elif(oct[r+s]==2):
+      octant3=octant3+1    #calculate count of octant 2 in range of particular mod
+     elif(oct[r+s]==-2):
+      octant4=octant4+1    #calculate count of octant -2 in range of particular mod
+     elif(oct[r+s]==3):
+      octant5=octant5+1    #calculate count of octant 3 in range of particular mod
+     elif(oct[r+s]==-3):
+      octant6=octant6+1     #calculate count of octant -3 in range of particular mod   
+     elif(oct[r+s]==4):
+      octant7=octant7+1    #calculate count of octant 4 in range of particular mod
+     elif(oct[r+s]==-4):
+      octant8=octant8+1    #calculate count of octant -4 in range of particular mod 
+   count1_mod.append(octant1) # push values of count of octant 1 in particular raneg of mod
+   count2_mod.append(octant2) # push values of count of octant -1 in particular raneg of mod
+   count3_mod.append(octant3) # push values of count of octant 2 in particular raneg of mod
+   count4_mod.append(octant4) # push values of count of octant -2 in particular raneg of mod
+   count5_mod.append(octant5) # push values of count of octant 3 in particular raneg of mod
+   count6_mod.append(octant6) # push values of count of octant -3 in particular raneg of mod
+   count7_mod.append(octant7) # push values of count of octant 4 in particular raneg of mod
+   count8_mod.append(octant8) # push values of count of octant -4 in particular raneg of mod
+   octant1=0
+   octant2=0
+   octant3=0
+   octant4=0
+   octant5=0
+   octant6=0
+   octant7=0
+   octant8=0
+ print(count1_mod)
