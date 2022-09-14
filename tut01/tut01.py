@@ -67,3 +67,42 @@ def octact_identification(mod=5000):
      oct.append(3)         # adding the octant in oct list after checking the condition of octant 3 to calculate overall octant 3 value
     else:
      oct.append(-3)          # adding the octant in oct list after checking the condition of octant -3 to calculate overall octant -3 value
+
+ with open('octant_input.csv', 'r') as file: # again opening the input file for overall count of octant 
+  reader = csv.reader(file)  
+  i=0
+  count1=0         # calculating total count of octant 1
+  count3=0         # calculating total count of octant 2
+  count2=0         # calculating total count of octant -1
+  count4=0         # calculating total count of octant -2
+  count5=0         # calculating total count of octant 3
+  count6=0         # calculating total count of octant -3
+  count7=0         # calculating total count of octant 4
+  count8=0         # calculating total count of octant -4	 
+  for i in range(n):       # for loop to calculate count of octants
+   if (i<n-1):
+    if (oct[i]==1):
+     count1=count1+1
+    elif(oct[i]==-1):
+     count2=count2+1
+    elif(oct[i]==2):
+     count3=count3+1
+    elif(oct[i]==-2):
+     count4=count4+1
+    elif(oct[i]==3):
+     count5=count5+1
+    elif(oct[i]==-3):
+     count6=count6+1    
+    elif(oct[i]==4):
+     count7=count7+1
+    else:
+     count8=count8+1
+    i=i+1  
+ count1_mod=[]                   ## calculating total count of octant in mod range 1 
+ count2_mod=[]                   ## calculating total count of octant in mod range 2
+ count3_mod=[]                   ## calculating total count of octant in mod range -1
+ count4_mod=[]                   ## calculating total count of octant in mod range -2
+ count5_mod=[]                   ## calculating total count of octant in mod range 3
+ count6_mod=[]                   ## calculating total count of octant in mod range -3
+ count7_mod=[]                   ## calculating total count of octant in mod range 4
+ count8_mod=[]                   ## calculating total count of octant in mod range -4
