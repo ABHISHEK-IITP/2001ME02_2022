@@ -156,3 +156,30 @@ def octact_identification(mod=5000):
    octant7=0
    octant8=0
  print(count1_mod)
+ with open('octant_output.csv','w',newline="") as file:
+  writer=csv.writer(file)
+  writer.writerow(["Time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant","","OctantID","+1","-1","+2","-2","+3","-3","+4","-4"])
+  r=0
+  for x in range(n-1):
+   if(x==0):
+    writer.writerow([time[x],u[x],v[x],w[x],u_avg,v_avg,w_avg,ud[x],vd[x],wd[x],oct[x],"","Overall count",count1,count2,count3,count4,count5,count6,count7,count8])
+   elif(x==1):
+    s="mod "+str(mod)		
+    writer.writerow([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"User input",s,"","","","","","","",""])
+   elif(x>=2 and x<2+m):
+    if(x==1+m):
+     z=r*mod 	
+     y=(r+1)*mod
+     s=str(z)+"-"+str(n)		 
+     writer.writerow([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"",s,count1_mod[x-2],count2_mod[x-2],count3_mod[x-2],count4_mod[x-2],count5_mod[x-2],count6_mod[x-2],count7_mod[x-2],count8_mod[x-2]])	 
+     r=r+1
+    else:
+     z=r*mod	
+     y=(r+1)*mod-1
+     s=str(z)+"-"+str(y)		 
+     writer.writerow([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"",s,count1_mod[x-2],count2_mod[x-2],count3_mod[x-2],count4_mod[x-2],count5_mod[x-2],count6_mod[x-2],count7_mod[x-2],count8_mod[x-2]])	 
+     r=r+1
+   else:
+    writer.writerow([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","","","","","","","",""])			 
+mod = 5000
+octact_identification(mod)
