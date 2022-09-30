@@ -349,3 +349,83 @@ def octant_transition_count(mod=5000):
     elif oct[j+p]==-4 and oct[j+1+p]==-4: #transition count from -4 to -4
       x8[7]=x8[7]+1  
       over[7][7]=over[7][7]+1    
+  if i==0 :
+    r.append(over) #Adding all transitions in required
+  required.append(x1)  
+  required.append(x2) 
+  required.append(x3)
+  required.append(x4)
+  required.append(x5)
+  required.append(x6)
+  required.append(x7)
+  required.append(x8)
+  c=required.copy()
+  r.append(c)
+  required.clear()
+ h = ["+1","-1","+2","-2","+3","-3","+4","-4"]
+ 
+ from openpyxl import Workbook 
+ book=Workbook() #plot sheet of rows
+ sheet= book.active    
+ rows=[] 
+ rows.append(["time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant","","OctantID","+1","-1","+2","-2","+3","-3","+4","-4"])
+ j=0
+ a=0
+ b=0
+ for x in range(n-2):
+  if(x==0):
+   rows.append([time[x],u[x],v[x],w[x],u_mean,v_avg,w_avg,ud[x],vd[x],wd[x],oct[x],"","Overall count",count1,count2,count3,count4,count5,count6,count7,count8])
+  elif(x==1):
+   s="mod "+str(mod)		
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"User input",s,"","","","","","","",""])
+  elif(x>=2 and x<2+m):
+   if(x==1+m):# it will work ont=ly if x=1+m
+    z=j*mod 	
+    y=(j+1)*mod
+    s=str(z)+"-"+str(n-2)		 
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"",s,octant1[x-2],octant2[x-2],octant3[x-2],octant4[x-2],octant5[x-2],octant6[x-2],octant7[x-2],octant8[x-2]])	 
+    rows.append([time[x],u[x],v[x],w[x],u_mean,v_avg,w_avg,ud[x],vd[x],wd[x],oct[x],"","Verified",count1,count2,count3,count4,count5,count6,count7,count8])
+    j=j+1
+   else:
+    z=j*mod	
+    y=(j+1)*mod-1
+    s=str(z)+"-"+str(y)		 
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"",s,octant1[x-2],octant2[x-2],octant3[x-2],octant4[x-2],octant5[x-2],octant6[x-2],octant7[x-2],octant8[x-2]])	 
+    j=j+1
+  elif (x-(2+m))%9==0 and x<9*(m+1)+2+m:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","","","","","","","",""])
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","","","","","","","",""])
+    if x ==2+m:
+     rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","Overall transition Count","","","","","","","",""])
+     rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","To","","","","","","",""])
+    else:
+     rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","Mod transition Count","","","","","","","",""])
+     rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"",str(((x-(2+m))//9-1)*mod)+"-"+str(np.minimum(((x-(2+m))//9)*mod,n-2)),"To","","","","","","",""])
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","Count","+1","-1","+2","-2","+3","-3","+4","-4"])
+  elif x<9*(m+1)+(2+m):
+   if (x-(2+m))%9==1:
+    print("hi",b," ",a)
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"From",h[((x-(2+m))%9)-1],r[b][a][0],r[b][a][1],r[b][a][2],r[b][a][3],r[b][a][4],r[b][a][5],r[b][a][6],r[b][a][7]])	
+   else:
+    print("hi",b," ",a)
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"",h[((x-(2+m))%9)-1],r[b][a][0],r[b][a][1],r[b][a][2],r[b][a][3],r[b][a][4],r[b][a][5],r[b][a][6],r[b][a][7]])
+   a=a+1
+   if a==8:
+    a=0
+    b=b+1
+  else:
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","","","","","","",""])
+
+ 
+
+ for i in rows:
+  sheet.append(i)
+ book.save("output_octant_transition_identify1.xlsx")
+ 
+      
+ 
+ 
+
+
+mod=3000
+octant_transition_count(mod)
