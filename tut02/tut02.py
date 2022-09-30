@@ -249,3 +249,52 @@ def octant_transition_count(mod=5000):
       x4[7]=x4[7]+1
       over[3][7]=over[3][7]+1  
   
+    elif oct[j+p]==3 and oct[j+p+1]==1 : #transition count from 3 to 1
+      x5[0]=x5[0]+1
+      over[4][0]=over[4][0]+1
+    elif oct[j+p]==3 and oct[j+p+1]==-1: #transition count from 3 to -1
+      x5[1]=x5[1]+1
+      over[4][1]=over[4][1]+1    
+    elif oct[j+p]==3 and oct[j+p+1]==2: #transition count from 3 to 2
+      x5[2]=x5[2]+1
+      over[4][2]=over[4][2]+1
+    elif oct[j+p]==3 and oct[j+p+1]==-2: #transition count from 3 to -2
+      x5[3]=x5[3]+1
+      over[4][3]=over[4][3]+1
+    elif oct[j+p]==3 and oct[j+p+1]==3: #transition count from 3 to 3
+      x5[4]=x5[4]+1 
+      over[4][4]=over[4][4]+1
+    elif oct[j+p]==3 and oct[j+1+p]==-3: #transition count from 3 to -3
+      x5[5]=x5[5]+1
+      over[4][5]=over[4][5]+1
+    elif oct[j+p]==3 and oct[j+p+1]==4: #transition count from 3 to 4
+      x5[6]=x5[6]+1
+      over[4][6]=over[4][6]+1
+    elif oct[j+p]==3 and oct[j+1+p]==-4: #transition count from 3 to -4
+      x5[7]=x5[7]+1
+      over[4][7]=over[4][7]+1 
+    
+    elif oct[j+p]==-3 and oct[j+p+1]==1 : #transition count from -3 to 1
+      x6[0]=x6[0]+1
+      over[5][0]=over[5][0]+1
+    elif oct[j+p]==-3 and oct[j+p+1]==-1: #transition count from -3 to -1
+      x6[1]=x6[1]+1    
+      over[5][1]=over[5][1]+1
+    elif oct[j+p]==-3 and oct[j+p+1]==2: #transition count from -3 to 2
+      x6[2]=x6[2]+1
+      over[5][2]=over[5][2]+1
+    elif oct[j+p]==-3 and oct[j+p+1]==-2: #transition count from -3 to -2
+      x6[3]=x6[3]+1
+      over[5][3]=over[5][3]+1
+    elif oct[j+p]==-3 and oct[j+p+1]==3: #transition count from -3 to 3
+      x6[4]=x6[4]+1
+      over[5][4]=over[5][4]+1 
+    elif oct[j+p]==-3 and oct[j+1+p]==-3: #transition count from -3 to -3
+      x6[5]=x6[5]+1
+      over[5][5]=over[5][5]+1
+    elif oct[j+p]==-3 and oct[j+p+1]==4: #transition count from -3 to 4
+      x6[6]=x6[6]+1
+      over[5][6]=over[5][6]+1
+    elif oct[j+p]==-3 and oct[j+1+p]==-4: #transition count from -3 to -4
+      x6[7]=x6[7]+1
+      over[5][7]=over[5][7]+1
