@@ -298,3 +298,54 @@ def octant_transition_count(mod=5000):
     elif oct[j+p]==-3 and oct[j+1+p]==-4: #transition count from -3 to -4
       x6[7]=x6[7]+1
       over[5][7]=over[5][7]+1
+
+    elif oct[j+p]==4 and oct[j+p+1]==1 : #transition count from 4 to 1
+      x7[0]=x7[0]+1
+      over[6][0]=over[6][0]+1
+    elif oct[j+p]==4 and oct[j+p+1]==-1: #transition count from 4 to -1
+      x7[1]=x7[1]+1    
+      over[6][1]=over[6][1]+1
+    elif oct[j+p]==4 and oct[j+p+1]==2: #transition count from 4 to 2
+      x7[2]=x7[2]+1
+      over[6][2]=over[6][2]+1
+    elif oct[j+p]==4 and oct[j+p+1]==-2: #transition count from 4 to -2
+      x7[3]=x7[3]+1
+      over[6][3]=over[6][3]+1
+    elif oct[j+p]==4 and oct[j+p+1]==3: #transition count from 4 to 3
+      x7[4]=x7[4]+1
+      over[6][4]=over[6][4]+1
+    elif oct[j+p]==4 and oct[j+1+p]==-3: #transition count from 4 to -3
+      x7[5]=x7[5]+1
+      over[6][5]=over[6][5]+1
+    elif oct[j+p]==4 and oct[j+p+1]==4: #transition count from 4 to 4
+      x7[6]=x7[6]+1
+      over[6][6]=over[6][6]+1
+    elif oct[j+p]==4 and oct[j+1+p]==-4: #transition count from 4 to -4
+      x7[7]=x7[7]+1 
+      over[6][7]=over[6][7]+1
+
+
+    elif oct[j+p]==-4 and oct[j+p+1]==1 : #transition count from -4 to 1
+      x8[0]=x8[0]+1
+      over[7][0]=over[7][0]+1
+    elif oct[j+p]==-4 and oct[j+p+1]==-1: #transition count from -4 to -1
+      x8[1]=x8[1]+1 
+      over[7][1]=over[7][1]+1  
+    elif oct[j+p]==-4 and oct[j+p+1]==2: #transition count from -4 to 2
+      x8[2]=x8[2]+1
+      over[7][2]=over[7][2]+1
+    elif oct[j+p]==-4 and oct[j+p+1]==-2: #transition count from -4 to -2
+      x8[3]=x8[3]+1
+      over[7][3]=over[7][3]+1
+    elif oct[j+p]==-4 and oct[j+p+1]==3: #transition count from -4 to 3
+      x8[4]=x8[4]+1
+      over[7][4]=over[7][4]+1 
+    elif oct[j+p]==-4 and oct[j+1+p]==-3: #transition count from -4 to -3
+      x8[5]=x8[5]+1
+      over[7][5]=over[7][5]+1
+    elif oct[j+p]==-4 and oct[j+p+1]==4: #transition count from -4 to 4
+      x8[6]=x8[6]+1
+      over[7][6]=over[7][6]+1
+    elif oct[j+p]==-4 and oct[j+1+p]==-4: #transition count from -4 to -4
+      x8[7]=x8[7]+1  
+      over[7][7]=over[7][7]+1    
