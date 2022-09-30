@@ -133,3 +133,66 @@ def octant_transition_count(mod=5000):
   oct6=0
   oct7=0
   oct8=0
+
+ r=[]
+ required=[]
+ over=[[0]*8,[0]*8,[0]*8,[0]*8,[0]*8,[0]*8,[0]*8,[0]*8]
+ for i in range(0,m) :
+  p=i*mod
+  x1=[0]*8 #transition from 1 to other octants
+  x2=[0]*8 #transition from -1 to other octants
+  x3=[0]*8 #transition from 2 to other octants
+  x4=[0]*8 #transition from -2 to other octants
+  x5=[0]*8 #transition from 3 to other octants
+  x6=[0]*8 #transition from -3 to other octants
+  x7=[0]*8 #transition from 4 to other octants
+  x8=[0]*8 #transition from -4 to other octants
+  for j in range(0,mod):
+   if j+p<=n-3:
+    if oct[j+p]==1 and oct[j+p+1]==1 : #transition count from 1 to 1
+      x1[0]=x1[0]+1
+      over[0][0]=over[0][0]+1
+    elif oct[j+p]==1 and oct[j+p+1]==-1: #transition count from 1 to -1
+      x1[1]=x1[1]+1    
+      over[0][1]=over[0][1]+1
+    elif oct[j+p]==1 and oct[j+p+1]==2: #transition count from 1 to 2
+      x1[2]=x1[2]+1
+      over[0][2]=over[0][2]+1
+    elif oct[j+p]==1 and oct[j+p+1]==-2: #transition count from 1 to -2
+      x1[3]=x1[3]+1
+      over[0][3]=over[0][3]+1
+    elif oct[j+p]==1 and oct[j+1+p]==3: #transition count from 1 to 3
+      x1[4]=x1[4]+1 
+      over[0][4]=over[0][4]+1
+    elif oct[j+p]==1 and oct[j+p+1]==-3: #transition count from 1 to -3
+      x1[5]=x1[5]+1
+      over[0][5]=over[0][5]+1
+    elif oct[j+p]==1 and oct[j+1+p]==4: #transition count from 1 to 4
+      x1[6]=x1[6]+1
+      over[0][6]=over[0][6]+1
+    elif oct[j+p]==1 and oct[j+p+1]==-4: #transition count from 1 to -4
+      x1[7]=x1[7]+1
+      over[0][7]=over[0][7]+1
+  
+    elif oct[j+p]==-1 and oct[j+p+1]==1 : #transition count from -1 to 1
+      x2[0]=x2[0]+1
+      over[1][0]=over[1][0]+1
+    elif oct[j+p]==-1 and oct[j+p+1]==-1: #transition count from -1 to -1
+      x2[1]=x2[1]+1    
+      over[1][1]=over[1][1]+1
+    elif oct[j+p]==-1 and oct[j+p+1]==2: #transition count from -1 to 2
+      x2[2]=x2[2]+1
+      over[1][2]=over[1][2]+1
+    elif oct[j+p]==-1 and oct[j+p+1]==-2: #transition count from -1 to -2
+      x2[3]=x2[3]+1
+      over[1][3]=over[1][3]+1
+    elif oct[j+p]==-1 and oct[j+p+1]==3: #transition count from -1 to 3
+      x2[4]=x2[4]+1
+      over[1][4]=over[1][4]+1 
+    elif oct[j+p]==-1 and oct[j+1+p]==-3: #transition count from -1 to -3
+      x2[5]=x2[5]+1
+      over[1][5]=over[1][5]+1
+    elif oct[j+p]==-1 and oct[j+p+1]==4: #transition count from -1 to 4
+      x2[6]=x2[6]+1
+      over[1][6]=over[1][6]+1
+    elif oct[j+p]==-1 and oct[j+1+p]==-4: #transition count from -1 to -4
