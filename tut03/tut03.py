@@ -49,7 +49,32 @@ def octant_longest_subsequence_count():
    oct.append(3)   # adding the octant in the oct list after checking the condition of octant 3 to calculate overall octant 3 value
   else:
    oct.append(-3)   # adding the octant in the oct list after checking the condition of octant -3 to calculate overall octant -3 value
+ subs1=0 # defining a variable for storing longest susequece of octant 1
+ subs2=0 #defining a variable for storing longest susequece of octant -1
+ subs3=0 #defining a variable for storing longest susequece of octant 2
+ subs4=0 #defining a variable for storing longest susequece of octant -2
+ subs5=0 #defining a variable for storing longest susequece of octant 3
+ subs6=0 #defining a variable for storing longest susequece of octant -3
+ subs7=0 #defining a variable for storing longest susequece of octant 4
+ subs8=0 #defining a variable for storing longest susequece of octant -4
 
+ lsubs1=0 # defining a variable for storing longest subsequence length for octant 1
+ lsubs2=0 # defining a variable for storing longest subsequence length for octant -1
+ lsubs3=0 # defining a variable for storing longest subsequence length for octant 2
+ lsubs4=0 # defining a variable for storing longest subsequence length for octant -2
+ lsubs5=0 # defining a variable for storing longest subsequence length for octant 3
+ lsubs6=0 # defining a variable for storing longest subsequence length for octant -3
+ lsubs7=0 # defining a variable for storing longest subsequence length for octant 4
+ lsubs8=0 # defining a variable for storing longest subsequence length for octant -4
+
+ count1=0 # defining variable for count of octant 1
+ count2=0 # defining variable for count of octant -1
+ count3=0 # defining variable for count of octant 2
+ count4=0 # defining variable for count of octant -2
+ count5=0 # defining variable for count of octant 3
+ count6=0 # defining variable for count of octant -3
+ count7=0 # defining variable for count of octant 4
+ count8=0 # defining variable for count of octant -4
 
 from platform import python_version
 ver = python_version()
