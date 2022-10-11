@@ -266,6 +266,38 @@ def octant_longest_subsequence_count():
     else:
      subs8=0
      count8=count8+1  # upgrade count8 by 1
+     
+#plotting the workbook for output
+ from openpyxl import Workbook  
+ book=Workbook()    
+ sheet= book.active    
+ rows=[] 
+ rows.append(["Time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant"])
+ for x in range(n-2): # appending the data in xlsx file 
+  if(x==0):
+   rows.append([time[x],u[x],v[x],w[x],u_avg,v_avg,w_avg,ud[x],vd[x],wd[x],oct[x],"","Octant","Longest Susequence Length","Count"])
+  elif x==1: # appending the data in xlsx file for octant 1  
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","1",lsubs1,count1])
+  elif x==2: # appending the data in xlsx file for octant -1 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","-1",lsubs2,count2])
+  elif x==3:  # appending the data in xlsx file for octant 2
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","2",lsubs3,count3])
+  elif x==4:  # appending the data in xlsx file for octant -2
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","-2",lsubs4,count4]) 
+  elif x==5: # appending the data in xlsx file for octant 3 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","3",lsubs5,count5])
+  elif x==6: # appending the data in xlsx file for octant -3 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","-3",lsubs6,count6])
+  elif x==7: # appending the data in xlsx file for octant 4 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","4",lsubs7,count7])
+  elif x==8: # appending the data in xlsx file for octant -4 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","-4",lsubs8,count8])
+  else: # appending the remaining data in xlsx file 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x]])
+
+ for i in rows:
+  sheet.append(i)
+ book.save("output_octant_longest_subsequence.xlsx")
        
 from platform import python_version
 ver = python_version()
