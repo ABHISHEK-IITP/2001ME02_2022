@@ -171,6 +171,55 @@ def octant_longest_subsequence_count():
     else:
      subs4=0
      count4=count4+1    # upgrade count4 by 1
+     
+ for r in range(0,n-1): # it will give count and longest subsequence length for octant 3
+  if oct[r]==3 :
+   subs5=subs5+1
+   if r==n-2:
+    if subs5>lsubs5:    #checking if subsequence 5 is longest subsequence for octant 3
+     lsubs5=subs5
+     subs5=0
+     count5=1           # if it is greater then upgrade the count5 to 1
+    elif lsubs5>subs5:
+     subs5=0           # if subs5 is not greater then assign it 0 value
+    else:
+     subs5=0
+     count5=count5+1   # upgrade count5 by 1
+  else:
+    if subs5>lsubs5:
+     lsubs5=subs5
+     subs5=0
+     count5=1
+    elif lsubs5>subs5:
+     subs5=0
+    else:
+     subs5=0
+     count5=count5+1  # upgrade count5 by 1
+
+ for r in range(0,n-1): # it will give count and longest subsequence length for octant -3
+  if oct[r]==-3 :
+   subs6=subs6+1
+   if r==n-2:
+    if subs6>lsubs1:    #checking if subsequence 6 is longest subsequence for octant -3
+     lsubs6=subs6
+     subs6=0
+     count6=1           # if it is greater then upgrade the count6 to 1
+    elif lsubs6>subs6:
+     subs6=0            # if subs6 is not greater then assign it 0 value
+    else:
+     subs6=0
+     count6=count6+1    # upgrade count6 by 1
+  else:
+    if subs6>lsubs6:
+     lsubs6=subs6
+     subs6=0
+     count6=1
+    elif lsubs6>subs6:
+     subs6=0
+    else:
+     subs6=0
+     count6=count6+1  # upgrade count6 by 1
+
 from platform import python_version
 ver = python_version()
 
