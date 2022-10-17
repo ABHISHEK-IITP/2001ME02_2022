@@ -54,4 +54,109 @@ def octant_longest_subsequence_count_with_range():
    oct.append(3)   # adding the octant in the oct list after checking the condition of octant 3 to calculate overall octant 3 value
   else:
    oct.append(-3)   # adding the octant in the oct list after checking the condition of octant -3 to calculate overall octant -3 value
+ subs1=0 # defining a variable for storing longest susequece of octant 1
+ subs2=0 #defining a variable for storing longest susequece of octant -1
+ subs3=0 #defining a variable for storing longest susequece of octant 2
+ subs4=0 #defining a variable for storing longest susequece of octant -2
+ subs5=0 #defining a variable for storing longest susequece of octant 3
+ subs6=0 #defining a variable for storing longest susequece of octant -3
+ subs7=0 #defining a variable for storing longest susequece of octant 4
+ subs8=0 #defining a variable for storing longest susequece of octant -4
+
+ lsubs1=0 # defining a variable for storing longest subsequence length for octant 1
+ lsubs2=0 # defining a variable for storing longest subsequence length for octant -1
+ lsubs3=0 # defining a variable for storing longest subsequence length for octant 2
+ lsubs4=0 # defining a variable for storing longest subsequence length for octant -2
+ lsubs5=0 # defining a variable for storing longest subsequence length for octant 3
+ lsubs6=0 # defining a variable for storing longest subsequence length for octant -3
+ lsubs7=0 # defining a variable for storing longest subsequence length for octant 4
+ lsubs8=0 # defining a variable for storing longest subsequence length for octant -4
+
+ count1=0 # defining variable for count of octant 1
+ count2=0 # defining variable for count of octant -1
+ count3=0 # defining variable for count of octant 2
+ count4=0 # defining variable for count of octant -2
+ count5=0 # defining variable for count of octant 3
+ count6=0 # defining variable for count of octant -3
+ count7=0 # defining variable for count of octant 4
+ count8=0 # defining variable for count of octant -4
  
+ 
+ for r in range(0,n-1): # it will give count and longest subsequence length for octant 1
+  if oct[r]==1 :
+   subs1=subs1+1
+   if r==n-2:
+    if subs1>lsubs1: #checking if subsequence 1 is longest subsequence for octant 1
+     lsubs1=subs1
+     subs1=0
+     count1=1        # if it is greater then upgrade the count1 to 1
+    elif lsubs1>subs1:
+     subs1=0        # if subs1 is not greater then assign it 0 value
+    else:
+     subs1=0
+     count1=count1+1  # upgrade count1 by 1
+  else:
+    if subs1>lsubs1:
+     lsubs1=subs1
+     subs1=0
+     count1=1
+    elif lsubs1>subs1:
+     subs1=0
+    else:
+     subs1=0
+     count1=count1+1 # upgrade count1 by 1
+
+ countcheck=0 # initiallize count check with 0
+ time1=[] # This list will store the starting time for longest subsequence length for octant +1 
+ for r in range(0,n-1):  
+  if oct[r]==1:
+   if countcheck==0: 
+    ti1=time[r] 
+   countcheck=countcheck+1
+  else:
+   countcheck=0 
+  if countcheck==lsubs1: # Checking if length is equal to longest subsequence length
+   time1.append(ti1); 
+   countcheck=0
+
+  
+ 
+ for r in range(0,n-1): # it will give count and longest subsequence length for octant -1
+  if oct[r]==-1 :
+   subs2=subs2+1
+   if r==n-2:
+    if subs2>lsubs2:    #checking if subsequence 2 is longest subsequence for octant -1
+     lsubs2=subs2
+     subs2=0
+     count2=1          # if it is greater then upgrade the count2 to 1
+    elif lsubs2>subs2:
+     subs2=0          # if subs2 is not greater then assign it 0 value
+    else:
+     subs2=0
+     count2=count2+1  # upgrade count2 by 1
+  else:
+    if subs2>lsubs2:
+     lsubs2=subs2
+     subs2=0
+     count2=1
+    elif lsubs2>subs2:
+     subs2=0
+    else:
+     subs2=0
+     count2=count2+1  # upgrade count2 by 1
+
+ countcheck=0 # initiallize count check with 0
+ time2=[] # This list will store the starting time for longest subsequence length for octant -1
+ for r in range(0,n-1):  
+  if oct[r]==-1:
+   if countcheck==0: 
+    ti2=time[r] 
+   countcheck=countcheck+1
+  else:
+   countcheck=0 
+  if countcheck==lsubs2: # Checking if length is equal to longest subsequence length 
+   time2.append(ti2); 
+   countcheck=0
+
+ 
+       
