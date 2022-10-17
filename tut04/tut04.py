@@ -431,3 +431,38 @@ def octant_longest_subsequence_count_with_range():
  for i in range(0,count8): # give count8 no. of space in first column
   column1.append("")
  v=len(column1)
+
+ column2=[] # list for second column of required table
+ column2.append("Longest Subsequence Length")
+ column2.append(lsubs1)
+ column2.append("From")
+ for i in range(0,count1): # give starting time of longest subsequece length for octant +1 in 
+  column2.append(time1[i])
+ column2.append(lsubs2)
+ column2.append("From")
+ for i in range(0,count2): # give starting time of longest subsequece length for octant -1 in 
+  column2.append(time2[i])
+ column2.append(lsubs3)
+ column2.append("From")
+ for i in range(0,count3): # give starting time of longest subsequece length for octant +2 in
+  column2.append(time3[i])
+ column2.append(lsubs4)
+ column2.append("From")
+ for i in range(0,count4): # give starting time of longest subsequece length for octant -2 in
+  column2.append(time4[i])
+ column2.append(lsubs5)
+ column2.append("From")
+ for i in range(0,count5): # give starting time of longest subsequece length for octant +3 in
+  column2.append(time5[i])
+ column2.append(lsubs6)
+ column2.append("From")
+ for i in range(0,count6): # give starting time of longest subsequece length for octant -3 in
+  column2.append(time6[i])
+ column2.append(lsubs7)
+ column2.append("From")
+ for i in range(0,count7): # give starting time of longest subsequece length for octant +4 in
+  column2.append(time7[i])
+ column2.append(lsubs8)
+ column2.append("From")
+ for i in range(0,count8): # give starting time of longest subsequece length for octant -4 in
+  column2.append(time8[i])
