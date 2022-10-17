@@ -501,3 +501,52 @@ def octant_longest_subsequence_count_with_range():
  column3.append("To")
  for i in range(0,count8): # give ending time of longest subsequece length for octant +4 
   column3.append(time8[i]+ 0.01*(lsubs8-1))
+
+#plotting the workbook
+ from openpyxl import Workbook 
+ book=Workbook()
+ sheet= book.active    
+ rows=[] 
+ rows.append(["Time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant"])
+ for x in range(n-2): # appending the data in xlsx file 
+  if(x==0):
+  
+   rows.append([time[x],u[x],v[x],w[x],u_avg,v_avg,w_avg,ud[x],vd[x],wd[x],oct[x],"","Octant","Longest Susequence Length","Count","","Octant","Longest Susequence Length","Count"])
+  elif x==1: # appending the data in xlsx file for octant 1  and time ranges 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","1",lsubs1,count1,"",column1[x],column2[x],column3[x]])
+  elif x==2: # appending the data in xlsx file for octant -1 and time ranges 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","-1",lsubs2,count2,"",column1[x],column2[x],column3[x]])
+  elif x==3:  # appending the data in xlsx file for octant 2 and time ranges
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","2",lsubs3,count3,"",column1[x],column2[x],column3[x]])
+  elif x==4:  # appending the data in xlsx file for octant -2 and time ranges
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","-2",lsubs4,count4,"",column1[x],column2[x],column3[x]]) 
+  elif x==5: # appending the data in xlsx file for octant 3 and time ranges 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","3",lsubs5,count5,"",column1[x],column2[x],column3[x]])
+  elif x==6: # appending the data in xlsx file for octant -3 and time ranges 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","-3",lsubs6,count6,"",column1[x],column2[x],column3[x]])
+  elif x==7: # appending the data in xlsx file for octant 4 and time ranges 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","4",lsubs7,count7,"",column1[x],column2[x],column3[x]])
+  elif x==8: # appending the data in xlsx file for octant -4 and time ranges 
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","-4",lsubs8,count8,"",column1[x],column2[x],column3[x]])
+  elif x<v:
+   rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","","","",column1[x],column2[x],column3[x]])
+  else: # appending the remaining data in xlsx file 
+   rows.append([time[x],u[x],v[x], w[x],"","","",ud[x],vd[x],wd[x],oct[x]])
+
+ for i in rows:
+  sheet.append(i)
+ book.save("output_octant_longest_subsequence_with_range.xlsx")
+ 
+
+from platform import python_version
+ver = python_version()
+
+if ver == "3.8.10":
+    print("Correct Version Installed")
+else:
+    print("Please install 3.8.10. Instruction are present in the GitHub Repo/Webmail. Url: https://pastebin.com/nvibxmjw")
+
+
+octant_longest_subsequence_count_with_range()
+end_time = datetime.now()
+print('Duration of Program Execution: {}'.format(end_time - start_time))
