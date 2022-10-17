@@ -395,3 +395,39 @@ def octant_longest_subsequence_count_with_range():
    countcheck=0
 
  
+
+ column1=[] # list for first column of required table
+ column1.append("Octant")  
+ column1.append("1")
+ column1.append("Time")
+ for i in range(0,count1): # give count1 no. of space in first column
+  column1.append("")
+ column1.append("-1")
+ column1.append("Time")
+ for i in range(0,count2): # give count2 no. of space in first column
+  column1.append("")
+ column1.append("2")
+ column1.append("Time")
+ for i in range(0,count3): # give count3 no. of space in first column
+  column1.append("")
+ column1.append("-2")
+ column1.append("Time")
+ for i in range(0,count4): # give count4 no. of space in first column
+  column1.append("")
+ column1.append("3")
+ column1.append("Time")
+ for i in range(0,count5): # give count5 no. of space in first column
+  column1.append("")
+ column1.append("-3")
+ column1.append("Time")
+ for i in range(0,count6): # give count6 no. of space in first column
+  column1.append("")
+ column1.append("4")
+ column1.append("Time")
+ for i in range(0,count7): # give count7 no. of space in first column
+  column1.append("")
+ column1.append("-4")
+ column1.append("Time")
+ for i in range(0,count8): # give count8 no. of space in first column
+  column1.append("")
+ v=len(column1)
