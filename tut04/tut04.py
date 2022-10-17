@@ -160,3 +160,82 @@ def octant_longest_subsequence_count_with_range():
 
  
        
+
+ for r in range(0,n-1): # This for loop will solve the count and longest subsequence length for octant 2
+  if oct[r]==2 :
+   subs3=subs3+1
+   if r==n-2:
+    if subs3>lsubs3:   #checking if subsequence 3 is longest subsequence for octant 2
+     lsubs3=subs3
+     subs3=0
+     count3=1         # if it is greater then upgrade the count3 to 1
+    elif lsubs3>subs3:
+     subs3=0          # if subs3 is not greater then assign it 0 value
+    else:
+     subs3=0
+     count3=count3+1  # upgrade count3 by 1
+  else:
+    if subs3>lsubs3:
+     lsubs3=subs3
+     subs3=0
+     count3=1
+    elif lsubs3>subs3:
+     subs3=0
+    else:
+     subs3=0
+     count3=count3+1  # upgrade count3 by 1 
+ 
+ countcheck=0 # initiallize count check with 0
+ time3=[]   # This list will store the starting time for longest subsequence length for octant 2
+ for r in range(0,n-1):  
+  if oct[r]==2:
+   if countcheck==0: 
+    ti3=time[r] 
+   countcheck=countcheck+1
+  else:
+   countcheck=0 
+  if countcheck==lsubs3: # Checking if length is equal to longest subsequence length 
+   time3.append(ti3); 
+   countcheck=0
+
+ 
+ 
+ for r in range(0,n-1): # it will give count and longest subsequence length for octant -2
+  if oct[r]==-2 :
+   subs4=subs4+1
+   if r==n-2:
+    if subs4>lsubs4:    #checking if subsequence 4 is longest subsequence for octant -2
+     lsubs4=subs4
+     subs4=0
+     count4=1          # if it is greater then upgrade the count4 to 1
+    elif lsubs4>subs4:
+     subs4=0           # if subs4 is not greater then assign it 0 value
+    else:
+     subs4=0
+     count4=count4+1   # upgrade count4 by 1
+  else:
+    if subs4>lsubs4:
+     lsubs4=subs4
+     subs4=0
+     count4=1 
+    elif lsubs4>subs4:
+     subs4=0
+    else:
+     subs4=0
+     count4=count4+1    # upgrade count4 by 1
+
+ countcheck=0 # initiallize with 0
+ time4=[]  # This list will store the starting time for longest subsequence length for octant -2
+ for r in range(0,n-1):  
+  if oct[r]==-2:
+   if countcheck==0: 
+    ti4=time[r] 
+   countcheck=countcheck+1
+  else:
+   countcheck=0 
+
+  if countcheck==lsubs4: # Checking if length is equal to longest subsequence length 
+   time4.append(ti4); 
+   countcheck=0
+
+  
