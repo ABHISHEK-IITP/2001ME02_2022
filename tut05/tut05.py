@@ -84,3 +84,81 @@ try:
    count7=count7+1
   else:
    count8=count8+1
+
+ octant_rank=[]    # list to store rank of overall octant count
+ octant_rank1_id=[] # list to store rank of overall octant 1 count
+ req_count=[]
+ req_count.append([count1,1])
+ req_count.append([count2,2])
+ req_count.append([count3,3])
+ req_count.append([count4,4])
+ req_count.append([count5,5])
+ req_count.append([count6,6])
+ req_count.append([count7,7])
+ req_count.append([count8,8]) 
+ req_count.sort()
+ req_octant_ranks=[0,0,0,0,0,0,0,0]
+ req_octant_ranks[req_count[0][1]-1]=8
+ req_octant_ranks[req_count[1][1]-1]=7
+ req_octant_ranks[req_count[2][1]-1]=6
+ req_octant_ranks[req_count[3][1]-1]=5
+ req_octant_ranks[req_count[4][1]-1]=4
+ req_octant_ranks[req_count[5][1]-1]=3
+ req_octant_ranks[req_count[6][1]-1]=2
+ req_octant_ranks[req_count[7][1]-1]=1
+ octant_rank.append(req_octant_ranks)
+ octant_rank_id_name=[]
+
+ if req_octant_ranks[0]==1:
+  octant_rank_id_name=[1,"Internal outward Interaction"]
+  octant_rank1_id.append(octant_rank_id_name)
+ elif req_octant_ranks[1]==1:
+  octant_rank_id_name=[-1,"External outward Interaction"]
+  octant_rank1_id.append(octant_rank_id_name)
+ elif req_octant_ranks[2]==1:
+  octant_rank_id_name=[2,"External Ejection"]
+  octant_rank1_id.append(octant_rank_id_name) 
+ elif req_octant_ranks[3]==1:
+  octant_rank_id_name=[-2,"Internal Ejection"]
+  octant_rank1_id.append(octant_rank_id_name) 
+ elif req_octant_ranks[4]==1:
+  octant_rank_id_name=[3,"External inward Interaction"]
+  octant_rank1_id.append(octant_rank_id_name) 
+ elif req_octant_ranks[5]==1:
+  octant_rank_id_name=[-3,"Internal inward Interaction"]
+  octant_rank1_id.append(octant_rank_id_name) 
+ elif req_octant_ranks[6]==1:
+  octant_rank_id_name=[4,"Internal Sweep"]
+  octant_rank1_id.append(octant_rank_id_name) 
+ elif req_octant_ranks[7]==1:
+  octant_rank_id_name=[-4,"External Sweep"]
+  octant_rank1_id.append(octant_rank_id_name) 
+
+ octant1=[] #list of octant 1
+ octant2=[] #list of octant -1
+ octant3=[] #list of octant 2
+ octant4=[] #list of octant -2
+ octant5=[] #list of octant 3
+ octant6=[] #list of octant -3
+ octant7=[] #list of octant 4
+ octant8=[] #list of octant -4
+
+ oct1=0 #making variables for using in function 
+ oct2=0 #making variables for using in function
+ oct3=0 #making variables for using in function
+ oct4=0 #making variables for using in function
+ oct5=0 #making variables for using in function
+ oct6=0 #making variables for using in function
+ oct7=0 #making variables for using in function
+ oct8=0 #making variables for using in function
+
+ m= int((n-2)/mod) +1
+
+ r1c=0    #count of rank 1 mod values of octant 1 
+ r2c=0    #count of rank 1 mod values of octant -1
+ r3c=0    #count of rank 1 mod values of octant 2
+ r4c=0    #count of rank 1 mod values of octant -2
+ r5c=0    #count of rank 1 mod values of octant 3
+ r6c=0    #count of rank 1 mod values of octant -3
+ r7c=0    #count of rank 1 mod values of octant 4
+ r8c=0    #count of rank 1 mod values of octant -4
