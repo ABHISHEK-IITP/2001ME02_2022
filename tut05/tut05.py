@@ -218,3 +218,46 @@ try:
   octant_rank.append(req_octant_ranks)
   octant_rank_id_name=[]
   octant_rank_id_name=[]
+
+  if req_octant_ranks[0]==1:
+   octant_rank_id_name=[1,"Internal outward Interaction"]
+   octant_rank1_id.append(octant_rank_id_name)
+   r1c=r1c+1
+  elif req_octant_ranks[1]==1:
+   octant_rank_id_name=[-1,"External outward Interaction"]
+   octant_rank1_id.append(octant_rank_id_name)
+   r2c=r2c+1
+  elif req_octant_ranks[2]==1:
+   octant_rank_id_name=[2,"External Ejection"]
+   octant_rank1_id.append(octant_rank_id_name)
+   r3c=r3c+1 
+  elif req_octant_ranks[3]==1:
+   octant_rank_id_name=[-2,"Internal Ejection"]
+   octant_rank1_id.append(octant_rank_id_name)
+   r4c=r4c+1 
+  elif req_octant_ranks[4]==1:
+   octant_rank_id_name=[3,"External inward Interaction"]
+   octant_rank1_id.append(octant_rank_id_name)
+   r5c=r5c+1 
+  elif req_octant_ranks[5]==1:
+   octant_rank_id_name=[-3,"Internal inward Interaction"]
+   octant_rank1_id.append(octant_rank_id_name)
+   r6c=r6c+1 
+  elif req_octant_ranks[6]==1:
+   octant_rank_id_name=[4,"Internal Sweep"]
+   octant_rank1_id.append(octant_rank_id_name)
+   r7c=r7c+1 
+  elif req_octant_ranks[7]==1:
+   octant_rank_id_name=[-4,"External Sweep"]
+   octant_rank1_id.append(octant_rank_id_name)
+   r8c=r8c+1 
+ 
+
+  oct1=0
+  oct2=0
+  oct3=0
+  oct4=0
+  oct5=0
+  oct6=0
+  oct7=0
+  oct8=0
