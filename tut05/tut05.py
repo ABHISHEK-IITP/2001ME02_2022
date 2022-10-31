@@ -261,3 +261,81 @@ try:
   oct6=0
   oct7=0
   oct8=0
+ try:
+  from openpyxl import Workbook 
+  book=Workbook()
+  sheet= book.active    
+  rows=[] 
+  rows.append(["Time",'U','V','W','Uavg','Vavg','Wavg',"U'=U-Uavg","V'=V-Vavg","W'=W-Wavg","Octant","","OctantID","+1","-1","+2","-2","+3","-3","+4","-4","octant_rank of 1","octant_rank of -1","octant_rank of 2","octant_rank of -2","octant_rank of 3","octant_rank of -3","octant_rank of 4","octant_rank of -4","octant_rank1 Octant ID","octant_rank1 Octant Name"])
+  j=0
+  a=0
+  b=0
+  for x in range(n-2):
+   if(x==0):
+    rows.append([time[x],u[x],v[x],w[x],u_avg,v_avg,w_avg,ud[x],vd[x],wd[x],oct[x],"","Overall count",count1,count2,count3,count4,count5,count6,count7,count8,octant_rank[x][0],octant_rank[x][1],octant_rank[x][2],octant_rank[x][3],octant_rank[x][4],octant_rank[x][5],octant_rank[x][6],octant_rank[x][7],octant_rank1_id[x][0],octant_rank1_id[x][1]])
+   elif(x==1):
+    s="mod "+str(mod)		
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"User input",s,"","","","","","","",""])
+   elif(x>=2 and x<2+m):
+    if(x==1+m):# it will work only if x=1+m
+     z=j*mod 	
+     y=(j+1)*mod
+     s=str(z)+"-"+str(n-2)		 
+     rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"",s,octant1[x-2],octant2[x-2],octant3[x-2],octant4[x-2],octant5[x-2],octant6[x-2],octant7[x-2],octant8[x-2],octant_rank[x-1][0],octant_rank[x-1][1],octant_rank[x-1][2],octant_rank[x-1][3],octant_rank[x-1][4],octant_rank[x-1][5],octant_rank[x-1][6],octant_rank[x-1][7],octant_rank1_id[x-1][0],octant_rank1_id[x-1][1]])	 
+     j=j+1
+    else:
+     z=j*mod	
+     y=(j+1)*mod-1
+     s=str(z)+"-"+str(y)		 
+     rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"",s,octant1[x-2],octant2[x-2],octant3[x-2],octant4[x-2],octant5[x-2],octant6[x-2],octant7[x-2],octant8[x-2],octant_rank[x-1][0],octant_rank[x-1][1],octant_rank[x-1][2],octant_rank[x-1][3],octant_rank[x-1][4],octant_rank[x-1][5],octant_rank[x-1][6],octant_rank[x-1][7],octant_rank1_id[x-1][0],octant_rank1_id[x-1][1]])	 
+     j=j+1
+   elif x==m+5:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","Octant ID","Octant Name","Count of octant_rank 1 Mod values","","","",""])
+   elif x==m+6:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","1","Internal Outward Interaction",r1c,"","","",""])
+   elif x==m+7:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","-1","External Outward Interaction",r2c,"","","",""])
+   elif x==m+8:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","2","External Ejection",r3c,"","","",""])
+   elif x==m+9:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","-2","Internal Ejection",r4c,"","","",""])
+   elif x==m+10:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","3","External inward Interaction",r5c,"","","",""])
+   elif x==m+11:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","-3","Internal inward Interaction",r6c,"","","",""])
+   elif x==m+12:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","4","Internal Sweep",r7c,"","","",""]) 
+   elif x==m+13:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","-4","External Sweep",r8c,"","","",""])     
+   else:
+    rows.append([time[x],u[x],v[x],w[x],"","","",ud[x],vd[x],wd[x],oct[x],"","","","","","","","",""])
+
+  for i in rows:
+   sheet.append(i)
+  book.save("octant_output_octant_ranking_excel.xlsx")
+        
+
+    
+  octant_name_id_mapping = {"1":"Internal outward interaction", "-1":"External outward interaction", "2":"External Ejection", "-2":"Internal Ejection", "3":"External inward interaction", "-3":"Internal inward interaction", "4":"Internal sweep", "-4":"External sweep"}
+ except:
+  print("An exception occurred in printing workbook")
+###Code
+except:
+  print("An exception occurred")
+  
+from platform import python_version
+ver = python_version()
+
+if ver == "3.8.10":
+    print("Correct Version Installed")
+else:
+    print("Please install 3.8.10. Instruction are present in the GitHub Repo/Webmail. Url: https://pastebin.com/nvibxmjw")
+
+
+mod=5000 
+octant_range_names(mod)
+
+
+#This shall be the last lines of the code.  
+end_time = datetime.now()
+print('Duration of Program Execution: {}'.format(end_time - start_time))
