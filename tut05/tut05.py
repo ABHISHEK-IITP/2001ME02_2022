@@ -162,3 +162,59 @@ try:
  r6c=0    #count of rank 1 mod values of octant -3
  r7c=0    #count of rank 1 mod values of octant 4
  r8c=0    #count of rank 1 mod values of octant -4
+
+ for i in range(m):   # for loop to calculate individual count of octants in range of mod
+  s=mod*i
+  for j in range(mod):	
+   if(j+s<n-1):	                                    
+    if (oct[j+s]==1):
+     oct1=oct1+1       #calculate count of octant 1 in range of particular mod
+    elif(oct[j+s]==-1):
+     oct2=oct2+1       #calculate count of octant -1 in range of particular mod
+    elif(oct[j+s]==2):
+     oct3=oct3+1       #calculate count of octant 2 in range of particular mod
+    elif(oct[j+s]==-2):
+     oct4=oct4+1       #calculate count of octant -2 in range of particular mod
+    elif(oct[j+s]==3):
+     oct5=oct5+1       #calculate count of octant 3 in range of particular mod
+    elif(oct[j+s]==-3):
+     oct6=oct6+1       #calculate count of octant -3 in range of particular mod
+    elif(oct[j+s]==4):
+     oct7=oct7+1       #calculate count of octant 4 in range of particular mod
+    elif(oct[j+s]==-4):
+     oct8=oct8+1       #calculate count of octant -4 in range of particular mod
+  octant1.append(oct1)  # push values of count of octant 1 in particular range of mod
+  octant2.append(oct2)  # push values of count of octant -1 in particular range of mod
+  octant3.append(oct3)  # push values of count of octant 2 in particular range of mod
+  octant4.append(oct4)  # push values of count of octant -2 in particular range of mod
+  octant5.append(oct5)  # push values of count of octant 3 in particular range of mod
+  octant6.append(oct6)  # push values of count of octant -3 in particular range of mod
+  octant7.append(oct7)  # push values of count of octant 4 in particular range of mod
+  octant8.append(oct8)  # push values of count of octant -4 in particular range of mod
+
+  req_count=[]
+  req_count.append([oct1,1])
+  req_count.append([oct2,2])
+  req_count.append([oct3,3])
+  req_count.append([oct4,4])
+  req_count.append([oct5,5])
+  req_count.append([oct6,6])
+  req_count.append([oct7,7])
+  req_count.append([oct8,8])
+
+  req_count.sort()
+
+  req_octant_ranks=[0,0,0,0,0,0,0,0]
+
+  req_octant_ranks[req_count[0][1]-1]=8   
+  req_octant_ranks[req_count[1][1]-1]=7
+  req_octant_ranks[req_count[2][1]-1]=6
+  req_octant_ranks[req_count[3][1]-1]=5
+  req_octant_ranks[req_count[4][1]-1]=4
+  req_octant_ranks[req_count[5][1]-1]=3
+  req_octant_ranks[req_count[6][1]-1]=2
+  req_octant_ranks[req_count[7][1]-1]=1
+
+  octant_rank.append(req_octant_ranks)
+  octant_rank_id_name=[]
+  octant_rank_id_name=[]
