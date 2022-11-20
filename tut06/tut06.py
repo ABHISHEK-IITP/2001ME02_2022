@@ -60,3 +60,54 @@ def attendance_report():
       st.append(0) 
     Stud_data.append(st)
    tot_dat.append(Stud_data)
+ 
+ if os.path.exists("output"):
+  for f in os.listdir("output"):
+    os.remove(os.path.join("output",f)) # removing all the prebuild files in output folder
+
+ os.chdir("output")
+ from openpyxl import Workbook
+ for i in range(0,n): 
+  book=Workbook()
+  sheet= book.active    
+  rows=[] # Making of list of rows of a particular student of all dates
+  rows.append(["Date","Roll No.","Name","Total attendance count","Real","Duplicate","Invalid","absent"])
+  rows.append(["",roll_number[i],stud_name[i],"","","","",""])
+  for q in range(0,s):
+   rows.append([dat[q],"","",tot_dat[i][q][0],tot_dat[i][q][1],tot_dat[i][q][2],tot_dat[i][q][3],tot_dat[i][q][4]]) # Appending all types of Attendance in row
+  for w in rows:
+   sheet.append(w)
+  book.save( roll_number[i] + ".xlsx") # Saving attendance of a particular student
+   
+  dic={0:"A",1:"P"} # Dictionary for present and absent
+  book=Workbook()
+  sheet= book.active    
+  rows=[]
+  z=["Roll No.","Name"] # Initializing 1st row
+  for i in dat: # Initializing 1st row
+   z.append(i)
+  z.append("Total Lecture taken") 
+  z.append("Total Real")
+  z.append("% Attendance")
+  rows.append(z) 
+
+  z=["(Sorted by roll no.)","","Atleast one real P"] # Initializing 2nd row
+  for i in range(0,s-1): # using this loop we are making 2nd row
+   z.append("")
+  z.append("(=Total Mon+Thur dynamic count")
+  z.append("")
+  z.append("Real/Actual Lecture taken")
+  rows.append(z) 
+
+  for i in range(0,n):  # using this loop i am making full data of all the students
+   z=[roll_number[i],stud_name[i]]
+   Stud_data=0
+   for q in range(0,s):
+    z.append(dic[tot_dat[i][q][1]]) #total lecture taken
+    if dic[tot_dat[i][q][1]]=="P":
+     Stud_data=Stud_data+1
+   z.append(s)
+   z.append(Stud_data) 
+   l=(Stud_data/s)*100
+   z.append("{:.2f}".format(l))
+   rows.append(z)
