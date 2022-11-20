@@ -111,3 +111,10 @@ def attendance_report():
    l=(Stud_data/s)*100
    z.append("{:.2f}".format(l))
    rows.append(z)
+
+  for w in rows:
+   sheet.append(w)
+  try:
+   book.save( "Attendance_report_consolidated" + ".xlsx")  # Saving full attendance report
+  except:
+    print("Error")
