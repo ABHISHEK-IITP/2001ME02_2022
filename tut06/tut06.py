@@ -118,3 +118,33 @@ def attendance_report():
    book.save( "Attendance_report_consolidated" + ".xlsx")  # Saving full attendance report
   except:
     print("Error")
+
+
+from platform import python_version
+ver = python_version()
+
+if ver == "3.8.10":
+    print("Correct Version Installed")
+else:
+    print("Please install 3.8.10. Instruction are present in the GitHub Repo/Webmail. Url: https://pastebin.com/nvibxmjw")
+
+
+attendance_report()
+# importing required libraries for sending mail
+import smtplib
+import email.encoders
+import base64
+
+from email.encoders import encode_base64
+from getpass import getpass
+from smtplib import SMTP
+    
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from mimetypes import guess_type
+    
+
+
+            
