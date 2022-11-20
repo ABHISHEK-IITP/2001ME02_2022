@@ -148,3 +148,50 @@ from mimetypes import guess_type
 
 
             
+def send_mail(): #defining function to send mail
+    fromaddr = input("Enter Mail Id: ") #taking mail id from mail is to be sent
+    toaddr = "cs3842022@gmail.com"  #reciever's mail id
+    Password_ = input("Enter Password: ")  #generated password of sender's mail id 
+
+   
+    msg = MIMEMultipart()    #  MIMEMultipart
+    msg['From'] = fromaddr    # sender's mail id
+    msg['To'] = toaddr    # receiver's email address
+    msg['Subject'] = "Tut06 attendance report"   # Subject of mail
+    body = "Dear Sir,\n\nPlease find attachment.\n\nThanks and Regards\nAbhishek\n2001ME02" #message of mail
+    msg.attach(MIMEText(body, 'plain')) #attachment 
+
+    filename = 'attendance_report_consolidated.xlsx'  #attachment
+    attachment = open("attendance_report_consolidated.xlsx", "rb") #opening attachment
+
+    p = MIMEBase('application', 'octet-stream')   # instance of MIMEBase and named as p
+
+    p.set_payload((attachment).read())    # To change the payload into encoded form
+
+    encoders.encode_base64(p)             # encode into base64
+
+    p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
+
+    msg.attach(p)    # attach the file with message
+
+    s = smtplib.SMTP('smtp.gmail.com', 587)     # creates SMTP session
+
+    s.starttls()     
+
+    s.login(fromaddr, Password_)    # login sender
+
+    text = msg.as_string()      # Converts the Multipart msg into a string
+
+    s.sendmail(fromaddr, toaddr, text)  # sending the mail
+    s.quit()
+
+
+
+send_mail()   #Running function to send mail
+print("*****************************************************     run successfully     ******************************************************")
+
+
+
+#This shall be the last lines of the code.
+end_time = datetime.now()
+print('Duration of Program Execution: {}'.format(end_time - start_time))
