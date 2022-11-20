@@ -28,3 +28,35 @@ def attendance_report():
  s=len(dat) # total dates
 
 
+ with open('input_attendance.csv', 'r') as file: #opening attendance file
+  reader = csv.reader(file) 
+  
+  tot_dat=[] # List of full data of students
+  Stud_data=[] # List of full data of Particular student
+  st=[] # List of full data of  a particular Student on a particular date 
+  for x in roll_number:
+   Stud_data=[] # Initializing Stud data
+   for j in dat:
+    st=[] # Initializing st(total attendance)
+    Real_Att=0 #initialising Real attandence of student
+    Dup_Att=0  #initialising Duplicate attendance of student
+    Fake_Att=0  #initailising Fake attendance of student
+    with open('input_attendance.csv', 'r') as file: #opening attendance file again
+     reader = csv.reader(file)
+     for row in reader:
+      if j==row[0][0:5] and row[1][0:8]==x and (row[0][11:13]=="14" or row[0][11:16]=="15:00" ) and Real_Att==0 : 
+       Real_Att=Real_Att+1 # Updating real attendance of student
+      elif j==row[0][0:5] and row[1][0:8]==x and (row[0][11:13]=="14" or row[0][11:16]=="15:00") and Real_Att>0 : 
+       Dup_Att=Dup_Att+1 # Updating Duplicate attendance of student 
+      elif j==row[0][0:5] and row[1][0:8]==x :
+       Fake_Att=Fake_Att+1 # Updating Fake attendance of student
+     st.append(Real_Att+Dup_Att+Fake_Att)   #appending total attendance
+     st.append(Real_Att)  # appending real attendance
+     st.append(Dup_Att)   # appending Duplicate attendance
+     st.append(Fake_Att)  # appending Fake attendance
+     if Real_Att==0:
+      st.append(1)
+     else:
+      st.append(0) 
+    Stud_data.append(st)
+   tot_dat.append(Stud_data)
