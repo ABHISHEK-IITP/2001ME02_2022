@@ -328,3 +328,83 @@ for i in range(len(pak_bowlers)):
     sheet.cell(47+i,9).value = pak_bowlers[Pak_bowlers_name[i]][6]
     Pak_bowlers_score+=pak_bowlers[Pak_bowlers_name[i]][2]
     FOW_ind+=pak_bowlers[Pak_bowlers_name[i]][3]
+
+# india batting
+sheet.cell(14+len(pak_bats)+len(pak_bowlers),1).value = " INDIA"
+sheet.cell(14+len(pak_bats)+len(pak_bowlers),2).value = " INNINGS"
+
+Ind_batters_name=[]
+for key in ind_bats.keys():
+    Ind_batters_name.append(key)
+
+
+for i in range(len(ind_bats)):
+    sheet.cell(34+i,1).value = Ind_batters_name[i]
+    sheet.cell(34+i,5).value = ind_bats[Ind_batters_name[i]][0]
+    sheet.cell(34+i,6).value = ind_bats[Ind_batters_name[i]][1]
+    sheet.cell(34+i,7).value = ind_bats[Ind_batters_name[i]][2]
+    sheet.cell(34+i,8).value = ind_bats[Ind_batters_name[i]][3]
+    sheet.cell(34+i,9).value = ind_bats[Ind_batters_name[i]][4]
+
+    if Ind_batters_name[i] not in out_ind_bat:
+        sheet.cell(34+i,3).value = "not out"
+    else:
+        sheet.cell(34+i,3).value=out_ind_bat[Ind_batters_name[i]]
+
+sheet["A32"] = "Batter"
+sheet["E32"] = "Runs"
+sheet["F32"] = "Balls"
+sheet["G32"] = " 4s "
+sheet["H32"] = " 6s "
+sheet["I32"] = "  SR  "
+
+# india bowling
+
+sheet["A46"] = "Bowler"
+sheet["C46"] = "Over"
+sheet["D46"] = "Maiden"
+sheet["E46"] = "Runs"
+sheet["F46"] = "Wicket"
+sheet["G46"] = "No Ball"
+sheet["H46"] = "Wide"
+sheet["I46"] = "Economy"
+
+Ind_bowlers_name=[]
+for key in ind_bowlers.keys():
+    Ind_bowlers_name.append(key)
+
+for i in range(len(ind_bowlers)):
+
+    sheet.cell(22+i,1).value = Ind_bowlers_name[i]
+    sheet.cell(22+i,3).value = ind_bowlers[Ind_bowlers_name[i]][0]
+    sheet.cell(22+i,4).value = ind_bowlers[Ind_bowlers_name[i]][1]
+    sheet.cell(22+i,5).value = ind_bowlers[Ind_bowlers_name[i]][2]
+    sheet.cell(22+i,6).value = ind_bowlers[Ind_bowlers_name[i]][3]
+    sheet.cell(22+i,7).value = ind_bowlers[Ind_bowlers_name[i]][4]
+    sheet.cell(22+i,8).value = ind_bowlers[Ind_bowlers_name[i]][5]
+    sheet.cell(22+i,9).value = ind_bowlers[Ind_bowlers_name[i]][6]
+    ind_bowlers_score+=ind_bowlers[Ind_bowlers_name[i]][2]
+    FOW_pak+=ind_bowlers[Ind_bowlers_name[i]][3]
+
+ind_total_score=ind_bowlers_score+pak_byes +1
+pak_total_score = Pak_bowlers_score+ind_byes -1
+# print(over_ind)
+# print(pak_overs_count)
+sheet["H30"] = " "+str(ind_total_score) +" - " + str(FOW_ind)
+sheet["I30"] = "(" +str(over_ind)+ ")" +"overs"
+Eone=" "+str(pak_total_score) +" - " + str(FOW_pak)
+Fone = "(" +str(pak_overs_count) + ")" +"overs"
+
+sheet["A17"]="Extra"
+sheet["E17"]=extra_data_paki
+sheet["A18"] = "Total"
+sheet["E18"] = str(pak_total_score)+" ("+ str(FOW_pak) + " wkt, "+ str(pak_overs_count) + " Ov )"
+sheet["A19"] = "Fall of Wickets"
+sheet["E19"] = Fall_of_Wickets_paki
+
+sheet["A42"] = "Extra"
+sheet["E42"] = extra_data_india
+sheet["A43"] = "Total"
+sheet["E43"] = str(ind_total_score)+" ("+ str(FOW_ind) + " wkt, "+ str(over_ind) + " Ov )"
+sheet["A44"] = "Fall of Wickets"
+sheet["E44"] = Fall_of_Wickets_india
