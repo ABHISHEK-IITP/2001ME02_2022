@@ -408,3 +408,40 @@ sheet["A43"] = "Total"
 sheet["E43"] = str(ind_total_score)+" ("+ str(FOW_ind) + " wkt, "+ str(over_ind) + " Ov )"
 sheet["A44"] = "Fall of Wickets"
 sheet["E44"] = Fall_of_Wickets_india
+
+wb.save("Scoreboard.xlsx")
+
+df = pd.read_excel('Scoreboard.xlsx')
+
+df = df.set_axis(['PAKISTAN', ' Innings'] + [" "," ","",""," ",Eone ,Fone], axis='columns')
+
+df.to_csv('Scorecard.csv',index=False)
+
+import os
+
+os.path.exists("Scoreboard.xlsx") 
+os.remove("Scoreboard.xlsx") # deleting output excel
+
+
+
+
+
+from platform import python_version
+ver = python_version()
+
+if ver == "3.8.10":
+	print("Correct Version Installed")
+else:
+	print("Please install 3.8.10. Instruction are present in the GitHub Repo/Webmail. Url: https://pastebin.com/nvibxmjw")
+
+
+scorecard()
+
+
+
+
+
+
+#This shall be the last lines of the code.
+end_time = datetime.now()
+print('Duration of Program Execution: {}'.format(end_time - start_time))
