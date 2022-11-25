@@ -272,3 +272,32 @@ for val in pak_bowlers.values(): #economy
 
 Fall_of_Wickets_paki="15-1(Babar Azam,2.4), 42-2(Fakhar Zaman,5.5), 87-3(Iftikhar Ahmed,12.1), 96-4(Rizwan,14.1), 97-5(Khushdil,14.3), 112-6(Asif Ali,16.3), 114-7(Mohammad Nawaz,17.1), 128-8(Shadab Khan,18.2), 128-9(Naseem Shah,18.3), 147-10(Dahani,19.5)"
 Fall_of_Wickets_india = "1-1(Rahul,0.2), 50-2(Rohit,8.0), 53-3(Kohli,9.1), 89-4(Suryakumar Yadav,14.2), 136-5(Jadeja,19.1)"
+
+# pakistan batting
+Pak_batters_name=[]
+for key in pak_bats.keys():
+    Pak_batters_name.append(key)
+
+
+for i in range(len(pak_bats)):
+    sheet.cell(5+i,1).value = Pak_batters_name[i]
+    sheet.cell(5+i,5).value = pak_bats[Pak_batters_name[i]][0]
+    sheet.cell(5+i,6).value = pak_bats[Pak_batters_name[i]][1]
+    sheet.cell(5+i,7).value = pak_bats[Pak_batters_name[i]][2]
+    sheet.cell(5+i,8).value = pak_bats[Pak_batters_name[i]][3]
+    sheet.cell(5+i,9).value = pak_bats[Pak_batters_name[i]][4]
+    if Pak_batters_name[i] not in Pak_out_count:
+        sheet.cell(5+i,3).value = "not out"
+    else:
+        sheet.cell(5+i,3).value=Pak_out_count[Pak_batters_name[i]]
+
+
+extra_data_paki = "5 (b 1, lb 0, w 4, nb 0, p 0)"
+extra_data_india = "14 (b 0, lb 5, w 9, nb 0, p 0)"
+
+sheet.cell(3,1).value = "Batter"
+sheet["E3"] = "Runs"
+sheet["F3"] = "Balls"
+sheet["G3"] = " 4s "
+sheet["H3"] = " 6s "
+sheet["I3"] = "  SR  "
