@@ -301,3 +301,30 @@ sheet["F3"] = "Balls"
 sheet["G3"] = " 4s "
 sheet["H3"] = " 6s "
 sheet["I3"] = "  SR  "
+
+# Pakistan bowling
+
+sheet["A21"] = "Bowler"
+sheet["C21"] = "Over"
+sheet["D21"] = "Maiden"
+sheet["E21"] = "Runs"
+sheet["F21"] = "Wicket"
+sheet["G21"] = "No Ball"
+sheet["H21"] = "Wide"
+sheet["I21"] = "Economy"
+
+Pak_bowlers_name=[]
+for key in pak_bowlers.keys():
+    Pak_bowlers_name.append(key)
+
+for i in range(len(pak_bowlers)):
+    sheet.cell(47+i,1).value = Pak_bowlers_name[i]
+    sheet.cell(47+i,3).value = pak_bowlers[Pak_bowlers_name[i]][0]
+    sheet.cell(47+i,4).value = pak_bowlers[Pak_bowlers_name[i]][1]
+    sheet.cell(47+i,5).value = pak_bowlers[Pak_bowlers_name[i]][2]
+    sheet.cell(47+i,6).value = pak_bowlers[Pak_bowlers_name[i]][3]
+    sheet.cell(47+i,7).value = pak_bowlers[Pak_bowlers_name[i]][4]
+    sheet.cell(47+i,8).value = pak_bowlers[Pak_bowlers_name[i]][5]
+    sheet.cell(47+i,9).value = pak_bowlers[Pak_bowlers_name[i]][6]
+    Pak_bowlers_score+=pak_bowlers[Pak_bowlers_name[i]][2]
+    FOW_ind+=pak_bowlers[Pak_bowlers_name[i]][3]
