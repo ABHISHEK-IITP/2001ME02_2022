@@ -1040,3 +1040,124 @@ def octant_analysis(mod=5000):
             else:
                 row.append(["", "", "", "", "", "", "", "", "", ""])
         z = len(row)
+        # writing of data in sheet1
+        os.chdir(curr)
+        os.chdir("output")
+        from openpyxl import Workbook
+        book = Workbook()
+        sheet = book.active
+        rows = []
+        rows.append(["", '', '', '', '', '', '', "", "", "", "", "", "", "Overall Octant count", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", '', '', row[0][0], row[0]
+                    [1], row[0][2], row[0][3], row[0][4], row[0][5], row[0][6], row[0][7], row[0][8], row[0][9], "Longest Subsquence Length", "", "", "", "Longest Subsquence Length with Range", "", ""])
+
+        rows.append(["T", 'U', 'V', 'W', 'Uavg', 'Vavg', 'Wavg', "U'=U-Uavg", "V'=V-Vavg", "W'=W-Wavg", "Octant", "", "", "", '', '', '', "", "", "", "", "", "", '', '', '',
+                    "", "", "", "", "", "", "", row[1][0], row[1][1], row[1][2], row[1][3], row[1][4], row[1][5], row[1][6], row[1][7], row[1][8], row[1][9]])  # Printing of heading row
+        j = 0
+        a = 0
+        b = 0
+        for x in range(n-2):
+            if x > 1000:
+                rows.append([time[x], u[x], v[x], w[x], "",
+                            "", "", ud[x], vd[x], wd[x], oct[x]])
+            elif x == 0:
+                rows.append([time[x], u[x], v[x], w[x], u_mean, v_mean, w_mean, ud[x], vd[x], wd[x], oct[x], "", "", "Octant ID", "1", "-1", "2", "-2", "3", "-3", "4", "-4", "Rank Octant 1", "Rank Octant -1", "Rank Octant 2", "Rank Octant -2", "Rank Octant 3", "Rank Octant -3",
+                            "Rank Octant 4", "Rank Octant -4", "Rank1 Octant ID", "Rank1 Octant NAME", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+                # c8, rank[x][0], rank[x][1], rank[x][2], rank[x][3], rank[x][4], rank[x][5], rank[x][6], rank[x][7], rank1_id_name[x][0], rank1_id_name[x][1]])
+            elif (x == 1):
+                s = "mod "+str(mod)
+                rows.append([time[x], u[x], v[x], w[x], "", '', '', ud[x], vd[x], wd[x], oct[x], "", s, "Overall count", c1, c2, c3, c4, c5, c6, c7, c8, rank[x][0], rank[x][1], rank[x][2], rank[x][3], rank[x][4], rank[x][5], rank[x][6], rank[x][7],
+                            rank1_id_name[x][0], rank1_id_name[x][1], "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif (x >= 2 and x < 2+m):
+                if (x == 1+m):  # it will work only if x=1+m
+                    z = j*mod
+                    y = (j+1)*mod
+                    s = str(z)+"-"+str(n-2)
+                    rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x], wd[x], oct[x], "", "", s, oc1[x-2], oc2[x-2], oc3[x-2], oc4[x-2], oc5[x-2], oc6[x-2], oc7[x-2], oc8[x-2],
+                                 rank[x-1][0], rank[x-1][1], rank[x-1][2], rank[x-1][3], rank[x-1][4], rank[x-1][5], rank[x-1][6], rank[x-1][7], rank1_id_name[x-1][0], rank1_id_name[x-1][1], "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+                    j = j+1
+                else:
+                    z = j*mod
+                    y = (j+1)*mod-1
+                    s = str(z)
+                    rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x], wd[x], oct[x], "", "", s, oc1[x-2], oc2[x-2], oc3[x-2], oc4[x-2], oc5[x-2], oc6[x-2], oc7[x-2], oc8[x-2],
+                                 rank[x-1][0], rank[x-1][1], rank[x-1][2], rank[x-1][3], rank[x-1][4], rank[x-1][5], rank[x-1][6], rank[x-1][7], rank1_id_name[x-1][0], rank1_id_name[x-1][1], "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+                    j = j+1
+
+            ###########Printing the table of count of diffent rank 1 octants
+            
+            elif x == m+3:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x], wd[x], oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Octant ID", "Octant Name", "Count of Rank 1 Mod values", "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif x == m+4:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x], wd[x],
+                             oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "1", "Internal Outward Interaction", orc1, "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif x == m+5:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x], wd[x],
+                             oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-1", "External Outward Interaction", orc2, "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif x == m+6:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x],
+                             wd[x], oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "2", "External Ejection", orc3, "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif x == m+7:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x],
+                             wd[x], oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-2", "Internal Ejection", orc4, "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif x == m+8:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x], wd[x],
+                             oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "3", "External inward Interaction", orc5, "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif x == m+9:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x], wd[x],
+                             oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-3", "Internal inward Interaction", orc6, "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif x == m+10:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x],
+                             wd[x], oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "4", "Internal Sweep", orc7, "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            elif x == m+11:  
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x], vd[x],
+                             wd[x], oct[x], "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "-4", "External Sweep", orc8, "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+            else:  # Printing  the else data
+                rows.append([time[x], u[x], v[x], w[x], "", "", "", ud[x],
+                             vd[x], wd[x], oct[x],  "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", row[x+2][0], row[x+2][1], row[x+2][2], row[x+2][3], row[x+2][4], row[x+2][5], row[x+2][6], row[x+2][7], row[x+2][8], row[x+2][9], "", tu3[x][0], tu3[x][1], tu3[x][2], "", col_1[x], col_2[x], col_3[x]])
+
+        for i in rows:
+            sheet.append(i)
+
+        maan = PatternFill(start_color='FFFF00',
+                           end_color='FFFF00', fill_type='solid')
+        sheet.conditional_formatting.add(
+            f"W4:AE{2+(n-2)//mod+4}", CellIsRule(operator='equal', formula=[1], fill=maan))
+        thin_border = Border(left=Side(style='thin'), right=Side(
+            style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+        p = 4
+        f = len(col_1)-1001
+        for x in range(2+(n-2)//mod):
+            for y in range(35, 44):
+                sheet.cell(row=p-1, column=y).border = thin_border
+            for z in range(8):
+                for y in range(35, 44):
+                    sheet.cell(row=p, column=y).border = thin_border
+                p = p+1
+            p = p+5
+        for x in range(3, 6+(n-2)//mod):
+            for z in range(14, 33):
+                sheet.cell(row=x, column=z).border = thin_border
+        for x in range(7+(n-2)//mod, 16+(n-2)//mod):
+            for z in range(29, 32):
+                sheet.cell(row=x, column=z).border = thin_border
+        for x in range(3, 12):
+            for z in range(45, 48):
+                sheet.cell(row=x, column=z).border = thin_border
+        for x in range(3, f+4):
+            for z in range(49, 52):
+                sheet.cell(row=x, column=z).border = thin_border
+
+        ############ Saving all workbooks 
+        
+        book.save(list[:-5]+" cm_vel_octant_analysis_mod_"+str(mod)+".xlsx")
+        os.chdir(curr)
+    
+
+
+mod = 5000
+octant_analysis(mod)
+
+
+# This shall be the last lines of the code.
+end_time = datetime.now()
+print('Duration of Program Execution: {}'.format(end_time - start_time))
