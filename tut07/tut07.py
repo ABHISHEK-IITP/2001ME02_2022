@@ -759,3 +759,284 @@ def octant_analysis(mod=5000):
             oct6 = 0
             oct7 = 0
             oct8 = 0
+
+        r = []  # it is giving full data that we need to print
+        re = []  # it will give the data 2-d matrix of respective interval
+        over = [[0]*8, [0]*8, [0]*8, [0]*8, [0]*8, [0]*8, [0]
+                * 8, [0]*8]  # This is matirx of overall transition
+        for i in range(0, m):
+            p = i*mod
+
+            ######### Declaring list for storing the value each element in 2-d matrix of different intervals
+            a1 = [0]*8
+            a2 = [0]*8
+            a3 = [0]*8
+            a4 = [0]*8
+            a5 = [0]*8
+            a6 = [0]*8
+            a7 = [0]*8
+            a8 = [0]*8
+
+            for j in range(0, mod):
+                if j+p <= n-3:
+                    if oct[j+p] == 1 and oct[j+p+1] == 1:
+                        a1[0] = a1[0]+1
+                        # This is for overall transitin matrix
+                        over[0][0] = over[0][0]+1
+                    elif oct[j+p] == 1 and oct[j+p+1] == -1:
+                        # This will keep on increasing the value of each transition in different intervals
+                        a1[1] = a1[1]+1
+                        # This is for overall transitin matrix
+                        over[0][1] = over[0][1]+1
+                    elif oct[j+p] == 1 and oct[j+p+1] == 2:
+                        a1[2] = a1[2]+1
+                        over[0][2] = over[0][2]+1
+                    elif oct[j+p] == 1 and oct[j+p+1] == -2:
+                        a1[3] = a1[3]+1
+                        over[0][3] = over[0][3]+1
+                    elif oct[j+p] == 1 and oct[j+1+p] == 3:
+                        a1[4] = a1[4]+1
+                        over[0][4] = over[0][4]+1
+                    elif oct[j+p] == 1 and oct[j+p+1] == -3:
+                        a1[5] = a1[5]+1
+                        over[0][5] = over[0][5]+1
+                    elif oct[j+p] == 1 and oct[j+1+p] == 4:
+                        a1[6] = a1[6]+1
+                        over[0][6] = over[0][6]+1
+                    elif oct[j+p] == 1 and oct[j+p+1] == -4:
+                        a1[7] = a1[7]+1
+                        over[0][7] = over[0][7]+1
+                    elif oct[j+p] == -1 and oct[j+p+1] == 1:
+                        a2[0] = a2[0]+1
+                        over[1][0] = over[1][0]+1
+                    elif oct[j+p] == -1 and oct[j+p+1] == -1:
+                        a2[1] = a2[1]+1
+                        over[1][1] = over[1][1]+1
+                    elif oct[j+p] == -1 and oct[j+p+1] == 2:
+                        a2[2] = a2[2]+1
+                        over[1][2] = over[1][2]+1
+                    elif oct[j+p] == -1 and oct[j+p+1] == -2:
+                        a2[3] = a2[3]+1
+                        over[1][3] = over[1][3]+1
+                    elif oct[j+p] == -1 and oct[j+p+1] == 3:
+                        a2[4] = a2[4]+1
+                        over[1][4] = over[1][4]+1
+                    elif oct[j+p] == -1 and oct[j+1+p] == -3:
+                        a2[5] = a2[5]+1
+                        over[1][5] = over[1][5]+1
+                    elif oct[j+p] == -1 and oct[j+p+1] == 4:
+                        a2[6] = a2[6]+1
+                        over[1][6] = over[1][6]+1
+                    elif oct[j+p] == -1 and oct[j+1+p] == -4:
+                        a2[7] = a2[7]+1
+                        over[1][7] = over[1][7]+1
+                    elif oct[j+p] == 2 and oct[j+p+1] == 1:
+                        a3[0] = a3[0]+1
+                        over[2][0] = over[2][0]+1
+                    elif oct[j+p] == 2 and oct[j+p+1] == -1:
+                        a3[1] = a3[1]+1
+                        over[2][1] = over[2][1]+1
+                    elif oct[j+p] == 2 and oct[j+p+1] == 2:
+                        a3[2] = a3[2]+1
+                        over[2][2] = over[2][2]+1
+                    elif oct[j+p] == 2 and oct[j+p+1] == -2:
+                        a3[3] = a3[3]+1
+                        over[2][3] = over[2][3]+1
+                    elif oct[j+p] == 2 and oct[j+p+1] == 3:
+                        a3[4] = a3[4]+1
+                        over[2][4] = over[2][4]+1
+                    elif oct[j+p] == 2 and oct[j+1+p] == -3:
+                        a3[5] = a3[5]+1
+                        over[2][5] = over[2][5]+1
+                    elif oct[j+p] == 2 and oct[j+p+1] == 4:
+                        a3[6] = a3[6]+1
+                        over[2][6] = over[2][6]+1
+                    elif oct[j+p] == 2 and oct[j+1+p] == -4:
+                        a3[7] = a3[7]+1
+                        over[2][7] = over[2][7]+1
+                    elif oct[j+p] == -2 and oct[j+p+1] == 1:
+                        a4[0] = a4[0]+1
+                        over[3][0] = over[3][0]+1
+                    elif oct[j+p] == -2 and oct[j+p+1] == -1:
+                        a4[1] = a4[1]+1
+                        over[3][1] = over[3][1]+1
+                    elif oct[j+p] == -2 and oct[j+p+1] == 2:
+                        a4[2] = a4[2]+1
+                        over[3][2] = over[3][2]+1
+                    elif oct[j+p] == -2 and oct[j+p+1] == -2:
+                        a4[3] = a4[3]+1
+                        over[3][3] = over[3][3]+1
+                    elif oct[j+p] == -2 and oct[j+p+1] == 3:
+                        a4[4] = a4[4]+1
+                        over[3][4] = over[3][4]+1
+                    elif oct[j+p] == -2 and oct[j+1+p] == -3:
+                        a4[5] = a4[5]+1
+                        over[3][5] = over[3][5]+1
+                    elif oct[j+p] == -2 and oct[j+p+1] == 4:
+                        a4[6] = a4[6]+1
+                        over[3][6] = over[3][6]+1
+                    elif oct[j+p] == -2 and oct[j+1+p] == -4:
+                        a4[7] = a4[7]+1
+                        over[3][7] = over[3][7]+1
+                    elif oct[j+p] == 3 and oct[j+p+1] == 1:
+                        a5[0] = a5[0]+1
+                        over[4][0] = over[4][0]+1
+                    elif oct[j+p] == 3 and oct[j+p+1] == -1:
+                        a5[1] = a5[1]+1
+                        over[4][1] = over[4][1]+1
+                    elif oct[j+p] == 3 and oct[j+p+1] == 2:
+                        a5[2] = a5[2]+1
+                        over[4][2] = over[4][2]+1
+                    elif oct[j+p] == 3 and oct[j+p+1] == -2:
+                        a5[3] = a5[3]+1
+                        over[4][3] = over[4][3]+1
+                    elif oct[j+p] == 3 and oct[j+p+1] == 3:
+                        a5[4] = a5[4]+1
+                        over[4][4] = over[4][4]+1
+                    elif oct[j+p] == 3 and oct[j+1+p] == -3:
+                        a5[5] = a5[5]+1
+                        over[4][5] = over[4][5]+1
+                    elif oct[j+p] == 3 and oct[j+p+1] == 4:
+                        a5[6] = a5[6]+1
+                        over[4][6] = over[4][6]+1
+                    elif oct[j+p] == 3 and oct[j+1+p] == -4:
+                        a5[7] = a5[7]+1
+                        over[4][7] = over[4][7]+1
+                    elif oct[j+p] == -3 and oct[j+p+1] == 1:
+                        a6[0] = a6[0]+1
+                        over[5][0] = over[5][0]+1
+                    elif oct[j+p] == -3 and oct[j+p+1] == -1:
+                        a6[1] = a6[1]+1
+                        over[5][1] = over[5][1]+1
+                    elif oct[j+p] == -3 and oct[j+p+1] == 2:
+                        a6[2] = a6[2]+1
+                        over[5][2] = over[5][2]+1
+                    elif oct[j+p] == -3 and oct[j+p+1] == -2:
+                        a6[3] = a6[3]+1
+                        over[5][3] = over[5][3]+1
+                    elif oct[j+p] == -3 and oct[j+p+1] == 3:
+                        a6[4] = a6[4]+1
+                        over[5][4] = over[5][4]+1
+                    elif oct[j+p] == -3 and oct[j+1+p] == -3:
+                        a6[5] = a6[5]+1
+                        over[5][5] = over[5][5]+1
+                    elif oct[j+p] == -3 and oct[j+p+1] == 4:
+                        a6[6] = a6[6]+1
+                        over[5][6] = over[5][6]+1
+                    elif oct[j+p] == -3 and oct[j+1+p] == -4:
+                        a6[7] = a6[7]+1
+                        over[5][7] = over[5][7]+1
+                    elif oct[j+p] == 4 and oct[j+p+1] == 1:
+                        a7[0] = a7[0]+1
+                        over[6][0] = over[6][0]+1
+                    elif oct[j+p] == 4 and oct[j+p+1] == -1:
+                        a7[1] = a7[1]+1
+                        over[6][1] = over[6][1]+1
+                    elif oct[j+p] == 4 and oct[j+p+1] == 2:
+                        a7[2] = a7[2]+1
+                        over[6][2] = over[6][2]+1
+                    elif oct[j+p] == 4 and oct[j+p+1] == -2:
+                        a7[3] = a7[3]+1
+                        over[6][3] = over[6][3]+1
+                    elif oct[j+p] == 4 and oct[j+p+1] == 3:
+                        a7[4] = a7[4]+1
+                        over[6][4] = over[6][4]+1
+                    elif oct[j+p] == 4 and oct[j+1+p] == -3:
+                        a7[5] = a7[5]+1
+                        over[6][5] = over[6][5]+1
+                    elif oct[j+p] == 4 and oct[j+p+1] == 4:
+                        a7[6] = a7[6]+1
+                        over[6][6] = over[6][6]+1
+                    elif oct[j+p] == 4 and oct[j+1+p] == -4:
+                        a7[7] = a7[7]+1
+                        over[6][7] = over[6][7]+1
+                    elif oct[j+p] == -4 and oct[j+p+1] == 1:
+                        a8[0] = a8[0]+1
+                        over[7][0] = over[7][0]+1
+                    elif oct[j+p] == -4 and oct[j+p+1] == -1:
+                        a8[1] = a8[1]+1
+                        over[7][1] = over[7][1]+1
+                    elif oct[j+p] == -4 and oct[j+p+1] == 2:
+                        a8[2] = a8[2]+1
+                        over[7][2] = over[7][2]+1
+                    elif oct[j+p] == -4 and oct[j+p+1] == -2:
+                        a8[3] = a8[3]+1
+                        over[7][3] = over[7][3]+1
+                    elif oct[j+p] == -4 and oct[j+p+1] == 3:
+                        a8[4] = a8[4]+1
+                        over[7][4] = over[7][4]+1
+                    elif oct[j+p] == -4 and oct[j+1+p] == -3:
+                        a8[5] = a8[5]+1
+                        over[7][5] = over[7][5]+1
+                    elif oct[j+p] == -4 and oct[j+p+1] == 4:
+                        a8[6] = a8[6]+1
+                        over[7][6] = over[7][6]+1
+                    elif oct[j+p] == -4 and oct[j+1+p] == -4:
+                        a8[7] = a8[7]+1
+                        over[7][7] = over[7][7]+1
+            if i == 0:
+                r.append(over)
+
+            # Making  a 2-d Matrix required by appending eight 1-d matrix
+            re.append(a1)
+            re.append(a2)
+            re.append(a3)
+            re.append(a4)
+            re.append(a5)
+            re.append(a6)
+            re.append(a7)
+            re.append(a8)
+            c = re.copy()
+            r.append(c)  # appending the required matrix in r
+            re.clear()  # clearing required matrix so that new data may get store into it
+        h = ["+1", "-1", "+2", "-2", "+3", "-3", "+4", "-4"]
+        row = []
+        j = 0
+        a = 0
+        b = 0
+        for x in range(n-2):
+            if x == 0:
+                continue
+            if (x == 1):
+                s = "mod "+str(mod)
+            elif (x >= 2 and x < 2+m):
+                if (x == 1+m):  # it will work only if x=1+m
+                    z = j*mod
+                    y = (j+1)*mod
+                    s = str(z)+"-"+str(n-2)
+                    j = j+1
+                else:
+                    z = j*mod
+                    y = (j+1)*mod-1
+                    s = str(z)
+                    j = j+1
+            elif (x-(2+m)) % 9 == 0 and x < 9*(m+1)+2+m:
+                if x == 2+m:
+                    row.append(["", "Overall transition Count",
+                               "", "", "", "", "", "", "", ""])
+                    row.append(["", "To", "", "", "", "", "", "", "", ""])
+                    row.append(["", "Octant#", "+1", "-1", "+2",
+                               "-2", "+3", "-3", "+4", "-4"])
+                else:
+                    row.append(["", "", "", "", "", "", "", "", "", ""])
+                    row.append(["", "", "", "", "", "", "", "", "", ""])
+                    row.append(["", "Mod transition Count",
+                               "", "", "", "", "", "", "", ""])
+                    row.append(["", str(((x-(2+m))//9-1)*mod)+"-"+str(np.minimum(
+                        ((x-(2+m))//9)*mod-1, n-2)), "To", "", "", "", "", "", "", ""])
+                    row.append(["", "Octant#", "+1", "-1", "+2",
+                               "-2", "+3", "-3", "+4", "-4"])
+            elif x < 9*(m+1)+(2+m):
+                if (x-(2+m)) % 9 == 1:
+                    row.append(["From", h[((x-(2+m)) % 9)-1], r[b][a][0], r[b][a][1], r[b]
+                               [a][2], r[b][a][3], r[b][a][4], r[b][a][5], r[b][a][6], r[b][a][7]])
+                else:
+                    row.append(["", h[((x-(2+m)) % 9)-1], r[b][a][0], r[b][a][1], r[b][a]
+                               [2], r[b][a][3], r[b][a][4], r[b][a][5], r[b][a][6], r[b][a][7]])
+                a = a+1
+                if a == 8:
+                    a = 0
+                    b = b+1
+            else:
+                row.append(["", "", "", "", "", "", "", "", "", ""])
+        z = len(row)
