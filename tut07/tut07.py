@@ -551,3 +551,211 @@ def octant_analysis(mod=5000):
             col_1.append("")
             col_2.append("")
             col_3.append("")
+
+        ##### for overall count######### 
+        c1 = 0  
+        c2 = 0  
+        c3 = 0 
+        c4 = 0  
+        c5 = 0 
+        c6 = 0  
+        c7 = 0 
+        c8 = 0  
+
+        ################# Getting octants ###########
+        for i in range(0, n-1):  
+            if (oct[i] == 1):
+                c1 = c1+1
+            elif (oct[i] == -1):
+                c2 = c2+1
+            elif (oct[i] == 2):
+                c3 = c3+1
+            elif (oct[i] == -2):
+                c4 = c4+1
+            elif (oct[i] == 3):
+                c5 = c5+1
+            elif (oct[i] == -3):
+                c6 = c6+1
+            elif (oct[i] == 4):
+                c7 = c7+1
+            else:
+                c8 = c8+1
+        rank = []  # this list will give the ranks of all octants in differnt intervals
+        rank1_id_name = []  # This list will help rank list in storing the data
+        required = []  # This list will help rank list in storing the data
+        required.append([c1, 1])
+        required.append([c2, 2])
+        required.append([c3, 3])
+        required.append([c4, 4])
+        required.append([c5, 5])
+        required.append([c6, 6])
+        required.append([c7, 7])
+        required.append([c8, 8])
+        required.sort()
+
+
+        ########### Giving ranks in sorted list
+        required_ranks = [0, 0, 0, 0, 0, 0, 0, 0]
+        required_ranks[required[0][1]-1] = 8
+        required_ranks[required[1][1]-1] = 7
+        required_ranks[required[2][1]-1] = 6
+        required_ranks[required[3][1]-1] = 5
+        required_ranks[required[4][1]-1] = 4
+        required_ranks[required[5][1]-1] = 3
+        required_ranks[required[6][1]-1] = 2
+        required_ranks[required[7][1]-1] = 1
+        rank.append(required_ranks)  # Appending this list in rank list
+        rank_id_name = []
+
+        ############## # Givng name and id to Rank 1 Octant
+        if required_ranks[0] == 1: 
+            rank_id_name = [1, "Internal outward Interaction"]
+            rank1_id_name.append(rank_id_name)
+        elif required_ranks[1] == 1:  
+            rank_id_name = [-1, "External outward Interaction"]
+            rank1_id_name.append(rank_id_name)
+        elif required_ranks[2] == 1:  
+            rank_id_name = [2, "External Ejection"]
+            rank1_id_name.append(rank_id_name)
+        elif required_ranks[3] == 1:  
+            rank_id_name = [-2, "Internal Ejection"]
+            rank1_id_name.append(rank_id_name)
+        elif required_ranks[4] == 1:  
+            rank_id_name = [3, "External inward Interaction"]
+            rank1_id_name.append(rank_id_name)
+        elif required_ranks[5] == 1:  
+            rank_id_name = [-3, "Internal inward Interaction"]
+            rank1_id_name.append(rank_id_name)
+        elif required_ranks[6] == 1:  
+            rank_id_name = [4, "Internal Sweep"]
+            rank1_id_name.append(rank_id_name)
+        elif required_ranks[7] == 1:  
+            rank_id_name = [-4, "External Sweep"]
+            rank1_id_name.append(rank_id_name)
+
+        ############ Declaring list of octant count in mod range 
+        oc1 = []  
+        oc2 = []  
+        oc3 = []  
+        oc4 = []  
+        oc5 = []  
+        oc6 = []  
+        oc7 = []  
+        oc8 = []  
+        ########## Declaring variables for using in function
+        oct1 = 0  
+        oct2 = 0  
+        oct3 = 0  
+        oct4 = 0  
+        oct5 = 0  
+        oct6 = 0  
+        oct7 = 0  
+        oct8 = 0  
+        m = int((n-2)/mod) + 1  # m will give no.of interval
+
+        ###########Declaring variables for Count of rank 1 if Octants in different mod intervals
+        orc1 = 0  
+        orc2 = 0  
+        orc3 = 0
+        orc4 = 0  
+        orc5 = 0 
+        orc6 = 0  
+        orc7 = 0 
+        orc8 = 0
+        
+        ######## calculating no. of octants in particular a interval
+        for i in range(m):
+            s = mod*i
+            for j in range(mod):
+                if (j+s < n-1):
+                    if (oct[j+s] == 1):
+                        oct1 = oct1+1  
+                    elif (oct[j+s] == -1):
+                        oct2 = oct2+1  
+                    elif (oct[j+s] == 2):
+                        oct3 = oct3+1 
+                    elif (oct[j+s] == -2):
+                        oct4 = oct4+1  
+                    elif (oct[j+s] == 3):
+                        oct5 = oct5+1 
+                    elif (oct[j+s] == -3):
+                        oct6 = oct6+1   
+                    elif (oct[j+s] == 4):
+                        oct7 = oct7+1 
+                    elif (oct[j+s] == -4):
+                        oct8 = oct8+1  
+
+            oc1.append(oct1)
+            oc2.append(oct2)
+            oc3.append(oct3)
+            oc4.append(oct4)
+            oc5.append(oct5)
+            oc6.append(oct6)
+            oc7.append(oct7)
+            oc8.append(oct8)
+            required = []  # This list is used for storing the rank in a particular interval
+            required.append([oct1, 1])
+            required.append([oct2, 2])
+            required.append([oct3, 3])
+            required.append([oct4, 4])
+            required.append([oct5, 5])
+            required.append([oct6, 6])
+            required.append([oct7, 7])
+            required.append([oct8, 8])
+            required.sort()  # Sorting required with respect to First Coloumn
+            
+            ###### Giving ranks in sorted list
+            required_ranks = [0, 0, 0, 0, 0, 0, 0, 0]
+            required_ranks[required[0][1]-1] = 8  
+            required_ranks[required[1][1]-1] = 7  
+            required_ranks[required[2][1]-1] = 6  
+            required_ranks[required[3][1]-1] = 5  
+            required_ranks[required[4][1]-1] = 4  
+            required_ranks[required[5][1]-1] = 3  
+            required_ranks[required[6][1]-1] = 2  
+            required_ranks[required[7][1]-1] = 1  
+            rank.append(required_ranks)
+            rank_id_name = []
+            rank_id_name = []
+
+            ############# Givng name and id to Rank 1 Octant
+            if required_ranks[0] == 1:  
+                rank_id_name = [1, "Internal outward Interaction"]
+                rank1_id_name.append(rank_id_name)
+                orc1 = orc1+1
+            elif required_ranks[1] == 1:  
+                rank_id_name = [-1, "External outward Interaction"]
+                rank1_id_name.append(rank_id_name)
+                orc2 = orc2+1
+            elif required_ranks[2] == 1:  
+                rank_id_name = [2, "External Ejection"]
+                rank1_id_name.append(rank_id_name)
+                orc3 = orc3+1
+            elif required_ranks[3] == 1:  
+                rank_id_name = [-2, "Internal Ejection"]
+                rank1_id_name.append(rank_id_name)
+                orc4 = orc4+1
+            elif required_ranks[4] == 1:  
+                rank_id_name = [3, "External inward Interaction"]
+                rank1_id_name.append(rank_id_name)
+                orc5 = orc5+1
+            elif required_ranks[5] == 1:  
+                rank_id_name = [-3, "Internal inward Interaction"]
+                rank1_id_name.append(rank_id_name)
+                orc6 = orc6+1
+            elif required_ranks[6] == 1:  
+                rank_id_name = [4, "Internal Sweep"]
+                rank1_id_name.append(rank_id_name)
+                orc7 = orc7+1
+            elif required_ranks[7] == 1:  
+                rank_id_name = [-4, "External Sweep"]
+                rank1_id_name.append(rank_id_name)
+                orc8 = orc8+1
+            oct1 = 0
+            oct2 = 0
+            oct3 = 0
+            oct4 = 0
+            oct5 = 0
+            oct6 = 0
+            oct7 = 0
+            oct8 = 0
